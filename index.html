@@ -5,23 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Tapete</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>Crochê</title>
 </head>
 <body>
     <header>
-        <h1>Tapete fofo</h1>
+        <h1>Tapete &lt;3</h1>
     </header>
     <main>
-        <div class="tapete">
-            <div class="border out">
-                <div class="border in">
-                    <div class="border out">
-                        <div class="border in">
-                            <div class="border out"></div>
+        <div class="tapete-wrapper">
+            <div class="tapete">
+                <div class="border out">
+                    <div class="border in">
+                        <div class="border out">
+                            <div class="border in">
+                                <div class="border out"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="bttn-wrapper">
+            <button class="bttn random-color">Aleatorio</button>
         </div>
         <div class="input-wrapper">
             <div class="color-wrapper wrapper">
@@ -29,6 +35,7 @@
                     <label for="color-in">Primeira cor</label>
                     <input type="color" name="color-in" id="color-in" data-which="in" value="#a52a2a">
                 </div>
+                <button class="color-swap"></button>
                 <div class="input-color out">
                     <label for="color-out">Segunda cor</label>
                     <input type="color" name="color-out" id="color-out" data-which="out" value="#790018">
@@ -37,15 +44,11 @@
             <div class="range-wrapper wrapper">
                 <div class="input-range size">
                     <label for="range-size">Tamanho</label>
-                    <input type="range" name="range-size" id="range-size" min="200" max="500" step="50" value="300">
-                </div>
-                <div class="input-range padding">
-                    <label for="range-padding">Preenchimento</label>
-                    <input type="range" name="range-padding" id="range-padding" min="10" max="30" step="5" value="15">
+                    <input type="range" name="range-size" id="range-size" min="200" max="400" step="25" value="300">
                 </div>
                 <div class="input-range borders">
                     <label for="range-borders">Bordas</label>
-                    <input type="range" name="range-borders" id="range-borders" min="1" max="10" step="1" value="5">
+                    <input type="range" name="range-borders" id="range-borders" min="3" max="15" step="1" value="5">
                 </div>
             </div>
         </div>

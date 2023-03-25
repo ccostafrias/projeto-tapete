@@ -1,9 +1,12 @@
 const colors = document.querySelectorAll("input[type='color']")
+const [inColor, outColor] = colors
 const tapete = document.querySelector('.tapete')
-const paddingSlider = document.querySelector("#range-padding")
 const sizeSlider = document.querySelector("#range-size")
 const borderSlider = document.querySelector("#range-borders")
+const colorSwap = document.querySelector('.color-swap')
+const randomColor = document.querySelector('.random-color')
 
+borderSlider.addEventListener('change', () => { createBorders(borderSlider.value) })
 function createBorders(num) {
     const createdBorders = new Array
     for (let i = 0; i < num*2; i++) {
@@ -19,40 +22,43 @@ function createBorders(num) {
     }
 
     tapete.innerHTML = createdBorders.join('')
-    borders = [...document.querySelectorAll(".border")]
+    document.documentElement.style.setProperty(`--num-borders`, `${num}`)
 }
 
-borderSlider.addEventListener('change', () => {
-    createBorders(borderSlider.value)
-})
-
-let borders = [...document.querySelectorAll(".border")]
-
-
 colors.forEach(color => {
-    color.addEventListener('input', () => {
-        setColor(color.dataset.which, color.value)
-    })
+    color.addEventListener('input', () => { setColor(color.dataset.which, color.value) })
 })
 
 function setColor(which, color){
-    const bordersToChange = borders.filter(border => border.classList.contains(which))
-    bordersToChange.forEach(border => border.style.backgroundColor = color)
+    document.documentElement.style.setProperty(`--${which}-color`, `${color}`)
 }
 
-paddingSlider.addEventListener('change', () => {
-    setPadding(paddingSlider.value)
-})
-
-sizeSlider.addEventListener('change', () => {
-    setSize(sizeSlider.value)
-})
-
-function setPadding(padding){
-    borders.forEach(border => border.style.padding = `${padding}px`)
-}
-
+sizeSlider.addEventListener('change', () => { setSize(sizeSlider.value) })
 function setSize(size){
-    tapete.style.width = `${size}px`
+    document.documentElement.style.setProperty(`--tapete-width`, `${size}px`)
 }
 
+colorSwap.addEventListener('click', swapColor)
+function swapColor() {
+    const inColorV = inColor.value
+    const outColorV = outColor.value
+
+    updateColors(outColorV, inColorV)
+}
+
+randomColor.addEventListener('click', randomizeColors)
+function randomizeColors() {
+    const randomHex = () => {
+        let n = (Math.random() * 0xfffff * 1000000).toString(16);
+        return '#' + n.slice(0, 6);
+    }
+
+    updateColors(randomHex(), randomHex())
+}
+
+function updateColors(firstColor, secondColor) {
+    document.documentElement.style.setProperty(`--in-color`, `${firstColor}`)
+    document.documentElement.style.setProperty(`--out-color`, `${secondColor}`)
+    inColor.value = firstColor
+    outColor.value = secondColor
+}

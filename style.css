@@ -1,21 +1,33 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+:root {
+    --in-color: #a52a2a;
+    --out-color: #790018;
+
+    --tapete-width: 300px;
+    --num-borders: 5;
+}
+
 html,
 body {
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100dvh;
 }
 
 body,
-input {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 15px;
+input,
+button {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-size: 22px;
     color: #EEE2DF;
-    font-weight: bold;
 }
 
 body {
@@ -28,36 +40,63 @@ body {
     background: #B36A5E;
 }
 
+button {
+    appearance: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Delicious Handrawn', cursive;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
 
-    padding: 20px;
+    padding: 1em;
     border-radius: 20px;
     background-color: #C89F9C;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 
+.tapete-wrapper {
+    aspect-ratio: 3/2;
+    width: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tapete {
     aspect-ratio: 3/2;
-    width: 300px;
+    max-width: var(--tapete-width);
+    width: 100%;
+    margin: 0 auto;
 }
 
 .border {
     border-radius: 15px;
-    padding: 15px;
+    padding: calc(var(--tapete-width)/4 * (1/var(--num-borders)));
     height: 100%;
     width: 100%;
 }
 
 .border.in {
-    background-color: #a52a2a;
+    background-color: var(--in-color);
 }
 
 .border.out {
-    background-color: #790018;
+    background-color: var(--out-color);
 }
 
 .tapete > .border {
@@ -74,10 +113,13 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     gap: 20px;
 
     width: 100%;
+}
+
+.input-wrapper > *{
+    justify-content: space-evenly;
 }
 
 .wrapper{
@@ -90,6 +132,7 @@ main {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    justify-content: flex-end;
     gap: 10px;
 }
 
@@ -98,9 +141,30 @@ main {
     flex-direction: column;
 }
 
-label{
-    flex-grow: 1;
+.range-wrapper {
+    flex: 1;
+    align-items: stretch;
 }
+
+.color-swap {
+    align-self: center;
+    background-image: url('images/swap-vertical-outline.svg');
+    height: 28px;
+    width: 28px;
+}
+
+.bttn {
+    background-color: #B36A5E;
+    color: #C89F9C;
+    padding: .3em .6em;
+    border-radius: 5px;
+    transition: opacity .2s ease;
+}
+
+.bttn:hover {
+    opacity: .75;
+}
+
 
 input[type='color'] {
     -webkit-appearance: none;
@@ -118,4 +182,37 @@ input[type='color']::-webkit-color-swatch{
     height: inherit;
     border-radius: 5px;
     border: 2px solid white;
+}
+
+@media (max-width: 700px) {
+    header {
+        margin-top: 20px;
+    }
+
+    main {
+        width: 100%;
+        border-radius: 0;
+        padding: 40px;
+    }
+
+    .input-wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .input-color.out {
+        flex-direction: row;
+    }
+
+    .color-wrapper {
+        flex-direction: row;
+    }
+
+    .color-swap {
+        transform: rotate(90deg);
+    }
+
+    input[type='color'] {
+        height: 50px;
+        width: 50px;
+    }
 }
