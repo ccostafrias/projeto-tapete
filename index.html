@@ -26,19 +26,21 @@
                 </div>
             </div>
         </div>
-        <div class="bttn-wrapper">
+        <div class="random-wrapper">
+            <button class="random-bttn random-left" data-walk="-1"></button>
             <button class="bttn random-color">Aleatorio</button>
+            <button class="random-bttn random-right" data-walk="1"></button>
         </div>
         <div class="input-wrapper">
             <div class="color-wrapper wrapper">
                 <div class="input-color in">
-                    <label for="color-in">Primeira cor</label>
-                    <input type="color" name="color-in" id="color-in" data-which="in" value="#a52a2a">
+                    <label for="color-out">Primeira cor</label>
+                    <input type="color" name="color-out" id="color-out" data-which="out" value="#790018">
                 </div>
                 <button class="color-swap"></button>
                 <div class="input-color out">
-                    <label for="color-out">Segunda cor</label>
-                    <input type="color" name="color-out" id="color-out" data-which="out" value="#790018">
+                    <label for="color-in">Segunda cor</label>
+                    <input type="color" name="color-in" id="color-in" data-which="in" value="#a52a2a">
                 </div>
             </div>
             <div class="range-wrapper wrapper">
@@ -48,7 +50,7 @@
                 </div>
                 <div class="input-range borders">
                     <label for="range-borders">Bordas</label>
-                    <input type="range" name="range-borders" id="range-borders" min="3" max="15" step="1" value="5">
+                    <input type="range" name="range-borders" id="range-borders" min="3" max="15" step="2" value="5">
                 </div>
             </div>
         </div>
