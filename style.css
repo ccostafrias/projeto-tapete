@@ -19,14 +19,14 @@
 
 html,
 body {
-    min-height: 100dvh;
+    min-height: 100vh;
 }
 
 body,
 input,
 button {
     font-family: 'Edu NSW ACT Foundation', cursive;
-    font-size: 22px;
+    font-size: 18px;
     color: #EEE2DF;
 }
 
