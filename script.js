@@ -153,27 +153,34 @@ function verifyStorage() {
     updateColors(tapeteSet[tapeteIndex]['in'], tapeteSet[tapeteIndex]['out'])
 }
 
+window.addEventListener('mousemove', e => {
+    console.log(e.target.classList.contains('border'))
+})
+
 // Atualiza a varíavel das bordas
 function setBorders() {
     borders = document.querySelectorAll('.border')
     borders.forEach(border => {
-        border.addEventListener('mouseenter', handleBorderEnter)
-        border.addEventListener('mouseout', handleBorderLeave)
+        // border.addEventListener('mouseenter', handleBorderEnter)
+        // border.addEventListener('mouseout', handleBorderLeave)
         border.addEventListener('click', handleBorderClick, { capture: false })
     })
 }
 
 // Quando o mouse entra na borda, deixa ela 'marcada'
 function handleBorderEnter(e) {
+    console.log('Entrou')
     borders.forEach(border => border.classList.remove('highlight'))
+
     e.target.classList.add('highlight')
     e.stopPropagation()
 }
 
 // Quando o mouse saí da borda, deixa ela 'desmarcada'
 function handleBorderLeave(e) {
+    console.log('Saiu')
     borders.forEach(border => border.classList.remove('highlight'))
-
+    
     const parent = e.target.parentElement
     if (!parent.classList.contains('tapete')) parent.classList.add('highlight')
     e.stopPropagation()
@@ -183,13 +190,11 @@ function handleBorderLeave(e) {
 function handleBorderClick(e) {
     const classy = [...e.target.classList].find(c => c === 'out' || c === 'in')
     if (classy === 'in') { 
-        inColor.focus()
         inColor.click()
-    }
-    if (classy === 'out') { 
-        outColor.focus()
+    } else if (classy === 'out') { 
         outColor.click()
     }
+    borders.forEach(border => border.classList.remove('highlight'))
     e.stopPropagation()
 }
 
